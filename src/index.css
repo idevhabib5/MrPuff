@@ -1,0 +1,257 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* VapeShop POS Design System - Professional Dark Theme */
+
+@layer base {
+  :root {
+    /* Dark slate base palette */
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 14%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 14%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Emerald accent for actions */
+    --primary: 160 84% 39%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 222 47% 20%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 222 47% 18%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 160 84% 39%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 47% 22%;
+    --input: 222 47% 20%;
+    --ring: 160 84% 39%;
+
+    --radius: 0.75rem;
+
+    /* Custom POS colors */
+    --success: 160 84% 39%;
+    --success-foreground: 210 40% 98%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 222 47% 11%;
+    --info: 199 89% 48%;
+    --info-foreground: 210 40% 98%;
+    
+    /* Profit indicator */
+    --profit: 142 76% 36%;
+    --loss: 0 84% 60%;
+    
+    /* Role colors */
+    --role-super-admin: 280 87% 65%;
+    --role-manager: 199 89% 48%;
+    --role-cashier: 160 84% 39%;
+
+    /* Sidebar */
+    --sidebar-background: 222 47% 8%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 160 84% 39%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 222 47% 14%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 222 47% 16%;
+    --sidebar-ring: 160 84% 39%;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 14%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 14%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 160 84% 39%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 222 47% 20%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 222 47% 18%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 160 84% 39%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 222 47% 22%;
+    --input: 222 47% 20%;
+    --ring: 160 84% 39%;
+    --sidebar-background: 222 47% 8%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 160 84% 39%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 222 47% 14%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 222 47% 16%;
+    --sidebar-ring: 160 84% 39%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer utilities {
+  /* Gradient backgrounds */
+  .gradient-primary {
+    @apply bg-gradient-to-r from-primary to-emerald-400;
+  }
+  
+  .gradient-card {
+    @apply bg-gradient-to-br from-card to-secondary/50;
+  }
+  
+  .gradient-sidebar {
+    background: linear-gradient(to bottom, hsl(var(--sidebar-background)), hsl(var(--background)));
+  }
+
+  /* Glassmorphism effects */
+  .glass {
+    @apply backdrop-blur-lg bg-card/80 border border-border/50;
+  }
+  
+  .glass-hover {
+    @apply glass hover:bg-card/90 transition-all duration-200;
+  }
+
+  /* Smooth shadows */
+  .shadow-glow {
+    box-shadow: 0 0 40px -10px hsl(var(--primary) / 0.3);
+  }
+  
+  .shadow-card {
+    box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .shadow-elevated {
+    box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Role badge colors */
+  .role-super-admin {
+    @apply bg-purple-500/20 text-purple-300 border-purple-500/30;
+  }
+  
+  .role-manager {
+    @apply bg-blue-500/20 text-blue-300 border-blue-500/30;
+  }
+  
+  .role-cashier {
+    @apply bg-emerald-500/20 text-emerald-300 border-emerald-500/30;
+  }
+
+  /* Status indicators */
+  .status-success {
+    @apply bg-emerald-500/20 text-emerald-400;
+  }
+  
+  .status-warning {
+    @apply bg-amber-500/20 text-amber-400;
+  }
+  
+  .status-danger {
+    @apply bg-red-500/20 text-red-400;
+  }
+
+  /* POS-specific utilities */
+  .pos-grid-item {
+    @apply p-4 rounded-lg bg-secondary/50 hover:bg-secondary/80 
+           transition-all duration-200 cursor-pointer 
+           border border-border/50 hover:border-primary/50
+           hover:shadow-glow;
+  }
+  
+  .pos-total-display {
+    @apply text-4xl font-bold tracking-tight gradient-primary bg-clip-text text-transparent;
+  }
+
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out;
+  }
+
+  .animate-pulse-subtle {
+    animation: pulseSoft 2s ease-in-out infinite;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(10px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes scaleIn {
+  from { 
+    opacity: 0; 
+    transform: scale(0.95); 
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1); 
+  }
+}
+
+@keyframes pulseSoft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* Focus ring */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background;
+}
